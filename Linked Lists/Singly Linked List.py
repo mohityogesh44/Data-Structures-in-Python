@@ -102,10 +102,16 @@ class LinkedList:
             
         else:
             temp = self.head
+            flag = False
             while temp.nextNode.data != data:
                 temp = temp.nextNode
-            temp.nextNode = temp.nextNode.nextNode
-            
+                if temp.nextNode is None:
+                    print("Element not in list!")
+                    flag = True
+                    break
+            if not(flag):
+                temp.nextNode = temp.nextNode.nextNode
+                
     def delete_at_loc(self, loc):
         """Delete data at a given location. Location starts from 0"""
         if self.head is None:

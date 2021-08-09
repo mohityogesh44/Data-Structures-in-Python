@@ -13,7 +13,7 @@ class Node:
         self.nextNode = None
 
 
-# In[6]:
+# In[1]:
 
 
 class LinkedList:
@@ -110,10 +110,16 @@ class LinkedList:
             
         else:
             temp = self.head
+            flag = False
             while temp.nextNode.data != data:
                 temp = temp.nextNode
-            temp.nextNode = temp.nextNode.nextNode
-            temp.nextNode.prevNode = temp
+                if temp.nextNode is None:
+                    print("Element not in list!")
+                    flag = True
+                    break
+            if not(flag):
+                temp.nextNode = temp.nextNode.nextNode
+                temp.nextNode.prevNode = temp
             
     def delete_at_loc(self, loc):
         """Delete data at a given location. Location starts from 0"""
